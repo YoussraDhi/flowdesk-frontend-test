@@ -5,8 +5,12 @@ import frJson from './locale/fr.json';
 
 i18n.use(initReactI18next).init({
     resources: {
-        en: { ...enJson },
-        fr: { ...frJson }
+        en: {
+            translation: enJson,
+        },
+        fr: {
+            translation: frJson,
+        },
     }, 
     lng: 'en',
     fallbackLng: 'en',

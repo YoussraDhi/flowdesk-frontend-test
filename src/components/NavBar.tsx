@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Logo from '@/components/icons/logo';
 import styled from 'styled-components';
 
@@ -36,11 +37,13 @@ const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: underline;
+    color: #ebc034;
   }
 `;
 
 const NavBar = () => {
-  return (
+    const { t } = useTranslation();
+    return (
     <Nav>
       <Ul>
         <Li>
@@ -49,10 +52,10 @@ const NavBar = () => {
           </StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/about">About</StyledLink>
+            <StyledLink to="/dashboard">{t('navbar.dashboard')}</StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/contact">Contact</StyledLink>
+            <StyledLink to="/about">{t('navbar.about')}</StyledLink>
         </Li>
       </Ul>
     </Nav>

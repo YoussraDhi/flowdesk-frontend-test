@@ -1,6 +1,10 @@
 {
     "translation": {
-      "appTitle": "Crypto Tracker"
+      "appTitle": "Crypto Tracker", 
+      "navbar": {
+        "about": "À propos",
+        "dashboard": "Tableau de Marché"
+      }
     }
   }
   
