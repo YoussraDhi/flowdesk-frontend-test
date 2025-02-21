@@ -14,8 +14,11 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  max-height: 60px;
+  max-height: 40px;
   margin-bottom: 1rem;
+  z-index: 1000;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const Ul = styled.ul`

@@ -3,6 +3,12 @@ body {
   color: white;
 }
 
-
-
-
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: #fff;
+}
