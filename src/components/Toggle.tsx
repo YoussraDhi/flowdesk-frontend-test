@@ -46,16 +46,49 @@ const Input = styled.input`
   }
 `;
 
+const Label = styled.span<{ isToggled: boolean }>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  pointer-events: none;
+  transition: 0.4s;
+
+  &:first-of-type {
+    left: 10px;
+    opacity: ${({ isToggled }) => (isToggled ? 1 : 0)};
+  }
+
+  &:last-of-type {
+    right: 10px;
+    opacity: ${({ isToggled }) => (isToggled ? 0 : 1)};
+  }
+`;
+
 interface ToggleProps {
   isToggled: boolean;
   onToggle: () => void;
+  values?: [string, string];
 }
 
-const Toggle: React.FC<ToggleProps> = ({ isToggled, onToggle }) => {
+const Toggle: React.FC<ToggleProps> = ({ isToggled, onToggle, values }) => {
   return (
     <Switch>
       <Input type="checkbox" checked={isToggled} onChange={onToggle} />
       <Slider />
+      {values && values.length === 2 ? (
+        <React.Fragment>
+          <Label isToggled={isToggled}>{values[0]}</Label>
+          <Label isToggled={isToggled}>{values[1]}</Label>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Label isToggled={isToggled}>ON</Label>
+          <Label isToggled={isToggled}>OFF</Label>
+        </React.Fragment>
+      )}
     </Switch>
   );
 };

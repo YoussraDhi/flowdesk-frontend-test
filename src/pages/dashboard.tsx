@@ -2,7 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useTickerStore } from "@/store/tickerStore";
 import Table from "@/components/Table";
 import styled from "styled-components";
-import { Ticker } from "../types/Ticker";
+import { Ticker } from "@/types/Ticker";
+import Dropover from "@/components/Dropovoer";
+
+const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-top: 2rem;
+`;
+
+const DashboardHeader = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+`;
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -12,7 +31,6 @@ const DashboardContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   gap: 32px;
-  padding-top: 32px;
 `;
 
 const PaginationContainer = styled.div`
@@ -49,6 +67,11 @@ const ChangeCell = (value: string) => {
 export const Dashboard = () => {
   const tickers = useTickerStore((state) => state.tickers);
   const fetchTickers = useTickerStore((state) => state.fetchTickers);
+  const currencyBase = useTickerStore((state) => state.currencyBase);
+  const currencyBaseOptions = useTickerStore(
+    (state) => state.currencyBaseOptions
+  );
+  const setCurrencyBase = useTickerStore((state) => state.setCurrencyBase);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -61,7 +84,7 @@ export const Dashboard = () => {
   };
 
   const displayedTickers = tickers
-    .filter((t: Ticker) => t.symbol.includes("USD") && t.count > 0)
+    .filter((t: Ticker) => t.symbol.includes(`${currencyBase}`) && t.count > 0)
     .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const columns = [
@@ -73,28 +96,39 @@ export const Dashboard = () => {
 
   return (
     <main>
-      {displayedTickers.length > 0 ? (
-        <DashboardContainer>
-          <Table columns={columns} data={displayedTickers} />
-          <PaginationContainer>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            <span>Page {currentPage}</span>
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage * itemsPerPage >= tickers.length}
-            >
-              Next
-            </button>
-          </PaginationContainer>
-        </DashboardContainer>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <PageContainer>
+        {displayedTickers.length > 0 ? (
+          <>
+            <DashboardHeader>
+              <Dropover
+                options={currencyBaseOptions}
+                value={currencyBase}
+                onChange={(currency: string) => setCurrencyBase(currency)}
+              />
+            </DashboardHeader>
+            <DashboardContainer>
+              <Table columns={columns} data={displayedTickers} />
+              <PaginationContainer>
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <span>Page {currentPage}</span>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage * itemsPerPage >= tickers.length}
+                >
+                  Next
+                </button>
+              </PaginationContainer>
+            </DashboardContainer>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </PageContainer>
     </main>
   );
 };

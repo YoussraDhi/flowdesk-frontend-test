@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import Logo from '@/components/icons/logo';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Logo from "@/components/icons/logo";
+import styled from "styled-components";
 
 const Nav = styled.nav`
   padding: 1rem;
@@ -46,8 +46,10 @@ const StyledLink = styled(Link)`
 `;
 
 const NavBar = () => {
-    const { t } = useTranslation();
-    return (
+  const { t } = useTranslation();
+  // const [isToggled, setIsToggled] = React.useState(false);
+
+  return (
     <Nav>
       <Ul>
         <Li>
@@ -56,14 +58,20 @@ const NavBar = () => {
           </StyledLink>
         </Li>
         <Li>
-            <StyledLink to="/dashboard">{t('navbar.dashboard')}</StyledLink>
+          <StyledLink to="/dashboard">{t("navbar.dashboard")}</StyledLink>
         </Li>
         <Li>
-            <StyledLink to="/about">{t('navbar.about')}</StyledLink>
+          <StyledLink to="/about">{t("navbar.about")}</StyledLink>
         </Li>
       </Ul>
+      {/* <Li>
+        <Toggle
+          isToggled={isToggled}
+          onToggle={() => setIsToggled(!isToggled)}
+        />
+      </Li> */}
     </Nav>
   );
-}
+};
 
 export default NavBar;

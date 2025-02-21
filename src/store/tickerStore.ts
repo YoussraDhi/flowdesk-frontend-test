@@ -1,19 +1,26 @@
 import { create } from "zustand";
 import { getTickers } from "@/api/getTickers";
 import { Ticker } from "@/types/Ticker";
-import { getLivePrice } from "../api/getTickers";
+import { getLivePrice } from "@/api/getTickers";
 
 interface TickerState {
   tickers: Ticker[];
   fetchTickers: () => Promise<void>;
   setTickerPrice: (tickers: Ticker[]) => void;
+  currencyBase: string;
+  currencyBaseOptions: string[];
 }
 
 export const useTickerStore = create<TickerState>((set, get) => ({
   tickers: [],
+  currencyBase: "USD",
+  currencyBaseOptions: ["USD", "EUR", "JPY"],
+
   fetchTickers: async () => {
     const res = await getTickers();
-    set({ tickers: res });
+    set({
+      tickers: res,
+    });
     get().setTickerPrice(res);
   },
   setTickerPrice: (tickers: Ticker[]) => {
@@ -32,5 +39,8 @@ export const useTickerStore = create<TickerState>((set, get) => ({
         };
       }
     });
+  },
+  setCurrencyBase: (currencyBase: string) => {
+    set({ currencyBase });
   },
 }));
