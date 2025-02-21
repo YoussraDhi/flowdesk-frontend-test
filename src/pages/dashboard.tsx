@@ -64,6 +64,10 @@ const ChangeCell = (value: string) => {
   return <span style={{ color }}>{`${sign}${value}%`}</span>;
 };
 
+const roundPrice = (price: string) => {
+  return <span>{Number(price).toFixed(4)}</span>;
+};
+
 export const Dashboard = () => {
   const tickers = useTickerStore((state) => state.tickers);
   const fetchTickers = useTickerStore((state) => state.fetchTickers);
@@ -89,7 +93,7 @@ export const Dashboard = () => {
 
   const columns = [
     { header: "Symbol", accessor: "symbol" },
-    { header: "Price", accessor: "lastPrice" },
+    { header: "Price", accessor: "lastPrice", Cell: roundPrice },
     { header: "Change", accessor: "priceChangePercent", Cell: ChangeCell },
     { header: "Count", accessor: "count" },
   ];
