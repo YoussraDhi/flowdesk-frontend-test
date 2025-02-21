@@ -19,6 +19,7 @@ const TableHeader = styled.th`
   color: #fff;
   padding: 0.75rem;
   border-bottom: 2px solid #444;
+  cursor: pointer;
 `;
 
 const TableRow = styled.tr`
@@ -45,16 +46,45 @@ interface Column {
 interface TableProps {
   columns: Column[];
   data: any[];
+  onSort?: (column: string) => void;
+  sortColumn?: string | null;
+  sortDirection?: "asc" | "desc";
+  sortableColumns?: string[];
 }
 
-const Table: React.FC<TableProps> = ({ columns, data }) => {
+const Table: React.FC<TableProps> = ({
+  columns,
+  data,
+  onSort,
+  sortColumn,
+  sortDirection,
+  sortableColumns = [],
+}) => {
   return (
     <TableContainer>
       <StyledTable>
         <thead>
           <tr>
             {columns.map((column) => (
-              <TableHeader key={column.accessor}>{column.header}</TableHeader>
+              <TableHeader
+                key={column.accessor}
+                onClick={() =>
+                  onSort &&
+                  sortableColumns.includes(column.accessor) &&
+                  onSort(column.accessor)
+                }
+              >
+                {column.header}
+                {sortableColumns.includes(column.accessor) && (
+                  <span>
+                    {sortColumn === column.accessor
+                      ? sortDirection === "asc"
+                        ? " ▲"
+                        : " ▼"
+                      : " ↕"}
+                  </span>
+                )}
+              </TableHeader>
             ))}
           </tr>
         </thead>
