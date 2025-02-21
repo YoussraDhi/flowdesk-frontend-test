@@ -1,9 +1,17 @@
 {
-
-      "appTitle": "Crypto Tracker",
-      "navbar": {
-        "about": "About",
-        "dashboard": "Market Dashboard"
-      }
+  "appTitle": "Crypto Tracker",
+  "navbar": {
+    "about": "About",
+    "dashboard": "Market Dashboard"
+  },
+  "about": {
+    "title": "About",
+    "content": {
+      "goals": "GOALS",
+      "description": "Retrieve and display market data for a selected pair from Binance public API.",
+      "specifications": "SPECIFICATIONS",
+      "specificationsContent": "Your mission, if you accept it is to:\n- Users should be able to use a form to select the currency pair to query.\n- Upon submitting the form, fetch public market data (ticker, 24h ticker, recent trades) for the selected pair from Binance public REST api.\n- Users should be able to sort the trades data by time, price & quantity.\n\nFull documentation & endpoint list are available at\n- <1>Binance documentation api</1>\n\nRequirements\n- Use React with Typescript.\n- You can use any styling solution (at Flowdesk we use styled components)\n- You will have to publish your source code in a VCS\n\nGood luck!",
+      "link": "https://binance-docs.github.io/apidocs/spot/en/#change-log"
+    }
   }
-  
+}

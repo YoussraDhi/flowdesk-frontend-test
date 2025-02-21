@@ -1,6 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+.oswald-<uniquifier > {
+  font-family: "Oswald", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
 body {
-  background-color: #000;
   color: white;
+  font-family: "Oswald", sans-serif;
 }
 
 main {
@@ -11,6 +20,26 @@ main {
   justify-content: center;
   align-items: center;
   gap: 32px;
-  background-color: #1a1a1a;
   color: #fff;
+}
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  color: #fff;
+}
+
+/* Aurora.css */
+.aurora-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it stays behind other content */
 }

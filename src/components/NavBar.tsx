@@ -36,12 +36,12 @@ const Li = styled.li`
 `;
 
 const StyledLink = styled(Link)`
-  color: #ebc034;
+  color: #fca311;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
-    color: #ebc034;
+    color: #fca311;
   }
 `;
 
@@ -53,9 +53,9 @@ const NavBar = () => {
     <Nav>
       <Ul>
         <Li>
-          <StyledLink to="/">
+          <Link to="/">
             <Logo />
-          </StyledLink>
+          </Link>
         </Li>
         <Li>
           <StyledLink to="/dashboard">{t("navbar.dashboard")}</StyledLink>
