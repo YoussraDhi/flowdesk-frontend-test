@@ -123,6 +123,7 @@ export const Dashboard = () => {
     { header: "Symbol", accessor: "symbol" },
     { header: "Price", accessor: "lastPrice", Cell: roundPrice },
     { header: "Count", accessor: "count" },
+    { header: "Volume", accessor: "volume", Cell: roundPrice },
     { header: "openTime", accessor: "openTime", Cell: formattedTime },
     { header: "closeTime", accessor: "closeTime", Cell: formattedTime },
     { header: "Change", accessor: "priceChangePercent", Cell: ChangeCell },
@@ -152,6 +153,7 @@ export const Dashboard = () => {
                   "count",
                   "openTime",
                   "closeTime",
+                  "volume",
                 ]}
               />
               <PaginationContainer>
