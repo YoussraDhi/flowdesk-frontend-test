@@ -5,7 +5,7 @@ import { Ticker } from "@/types/Ticker";
 interface TickerState {
   tickers: Ticker[];
   tickerPair: string;
-  ticker: Ticker;
+  ticker: Ticker | null;
   fetchTickers: () => Promise<void>;
   fetchTicker: () => Promise<void>;
   setTickerPair: (tickerPair: string) => void;
@@ -18,8 +18,8 @@ export const useTickerStore = create<TickerState>((set, get) => ({
   tickers: [],
   currencyBase: "USD",
   currencyBaseOptions: ["USD", "EUR"],
-  tickerPair: "BTCETH",
-  ticker: {} as Ticker,
+  tickerPair: "BTCUSDT",
+  ticker: null,
 
   fetchTickers: async () => {
     const res = await getTickers();

@@ -10,4 +10,6 @@ export const mainTokens = [
   "XLM",
   "XRP",
   "USDT",
+  "EUR", // main currency
+  "USD", // main currency
 ];
