@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "@/pages/about.tsx";
 import Dashboard from "@/pages/dashboard.tsx";
 import Error from "@/pages/error.tsx";
-import Home from "@/pages/home.tsx";
+import Home from "@/pages/Home/home.tsx";
 import NavBar from "@/components/ui/NavBar.tsx";
 
 import "./index.css";

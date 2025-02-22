@@ -9,4 +9,5 @@ export const mainTokens = [
   "SOL",
   "XLM",
   "XRP",
+  "USDT",
 ];

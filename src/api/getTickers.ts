@@ -7,14 +7,10 @@ export const getLivePrice = (symbol: string) => {
 
 export const getTickers = async (): Promise<Ticker[]> => {
   const response = await axiosInstance.get("/v3/ticker/24hr");
-  // const livePrice = getLivePrice("btcusdt");
-  // livePrice.onmessage = (e: MessageEvent) => {
-  //   console.log(JSON.parse(e.data));
-  // };
   return response.data;
 };
 
-export const getTicker = async (symbol: string) => {
+export const getTicker = async (symbol: string): Promise<Ticker> => {
   const response = await axiosInstance.get(`/v3/ticker/price?symbol=${symbol}`);
   return response.data;
 };

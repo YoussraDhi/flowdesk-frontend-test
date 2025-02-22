@@ -3,6 +3,7 @@ import "@/App.css";
 
 import Aurora from "@/blocks/Backgrounds/Aurora/Aurora";
 import GlitchText from "@/blocks/TextAnimations/GlitchText/GlitchText";
+import TickerPairForm from "./tickerPairForm";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       >
         Crypto Tracker
       </GlitchText>
+      <TickerPairForm />
     </div>
   );
 }
