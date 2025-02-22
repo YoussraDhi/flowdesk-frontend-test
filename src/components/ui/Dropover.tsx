@@ -41,7 +41,11 @@ interface DropoverProps {
 const Dropover: React.FC<DropoverProps> = ({ options, value, onChange }) => {
   return (
     <SelectContainer>
-      <StyledSelect value={value} onChange={(e) => onChange(e.target.value)}>
+      <StyledSelect
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        role="select"
+      >
         {options.map((option, idx) => (
           <option key={idx} value={option}>
             {option}
