@@ -62,7 +62,7 @@ const Table: React.FC<TableProps> = ({
 }) => {
   return (
     <TableContainer>
-      <StyledTable>
+      <StyledTable role="data-table">
         <thead>
           <tr>
             {columns.map((column) => (
