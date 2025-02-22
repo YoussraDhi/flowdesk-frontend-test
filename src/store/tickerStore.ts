@@ -12,7 +12,7 @@ interface TickerState {
 export const useTickerStore = create<TickerState>((set) => ({
   tickers: [],
   currencyBase: "USD",
-  currencyBaseOptions: ["USD", "EUR", "JPY"],
+  currencyBaseOptions: ["USD", "EUR"],
 
   fetchTickers: async () => {
     const res = await getTickers();

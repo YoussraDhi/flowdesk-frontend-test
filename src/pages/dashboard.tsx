@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useTickerStore } from "@/store/tickerStore";
-import Table from "@/components/Table";
 import styled from "styled-components";
+// Components
+import Table from "@/components/ui/Table";
+import Dropover from "@/components/ui/Dropovoer";
+
+//Store
+import { useTickerStore } from "@/store/tickerStore";
+
+// Types
 import { Ticker } from "@/types/Ticker";
-import Dropover from "@/components/Dropovoer";
+import Loader from "@/components/ui/Loader";
 
 const PageContainer = styled.div`
   display: flex;
@@ -72,7 +78,7 @@ const formattedTime = (time: number) => {
   return <span>{new Date(time).toLocaleString()}</span>;
 };
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const tickers = useTickerStore((state) => state.tickers);
   const fetchTickers = useTickerStore((state) => state.fetchTickers);
   const currencyBase = useTickerStore((state) => state.currencyBase);
@@ -174,9 +180,11 @@ export const Dashboard = () => {
             </DashboardContainer>
           </>
         ) : (
-          <p>Loading...</p>
+          <Loader />
         )}
       </PageContainer>
     </main>
   );
 };
+
+export default Dashboard;
