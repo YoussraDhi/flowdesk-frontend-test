@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Dropover from "@/components/ui/Dropovoer";
+import Dropover from "@/components/ui/Dropover";
 import { useTickerStore } from "@/store/tickerStore";
 import styled from "styled-components";
 import useExchangeInfo from "@/hooks/useExchangeInfo";

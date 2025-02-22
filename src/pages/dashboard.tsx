@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // Components
 import Table from "@/components/ui/Table";
-import Dropover from "@/components/ui/Dropovoer";
+import Dropover from "@/components/ui/Dropover";
 
 //Store
 import { useTickerStore } from "@/store/tickerStore";
