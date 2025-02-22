@@ -50,7 +50,7 @@ const NavBar = () => {
   // const [isToggled, setIsToggled] = React.useState(false);
 
   return (
-    <Nav>
+    <Nav role="navigation">
       <Ul>
         <Li>
           <Link to="/">
